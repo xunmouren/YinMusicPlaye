@@ -17,7 +17,6 @@ pip install pygame
 ## 4.参考资料
 [廖雪峰官网python](https://liaoxuefeng.com/books/python/introduction/index.html)
 [菜鸟教程](https://www.runoob.com/python/python-gui-tkinter.html)
-[洪卫的博客](https://www.cnblogs.com/shwee/p/9427975.html)
 
 ## 5.任务列表
 - [x] 播放与暂停
