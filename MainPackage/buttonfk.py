@@ -3,7 +3,7 @@ import tkinter as tk
 def buttonmain(root):
 
     # 创建一个标签，初始文本为 "欢迎使用 Tkinter!"
-    label = tk.Label(root, text="欢迎使用 Tkinter!", font=("Arial", 14))
+    label = tk.Label(root, text="欢迎使用 YinMusicPlayer!", font=("Arial", 14))
     label.pack(pady=20)  # 使用 pack 布局管理器，添加一些垂直边距
 
     

@@ -31,7 +31,7 @@ def filemain(root):
 
     def show_about():
         # 显示关于信息
-        messagebox.showinfo("关于", "这是一个示例 Tkinter 应用程序，演示菜单和状态栏功能。")
+        messagebox.showinfo("关于", "这是一个阴乐播放器，只是一个练习项目。")
 
     # 添加菜单栏
     menu_bar = tk.Menu(root)

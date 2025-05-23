@@ -15,8 +15,8 @@ filemain(root)
 # 创建 MusicPlayer 实例
 player = MusicPlayer(root)
 
-# 显示播放和停止按钮
-player.playmusic()
+# 创建用户界面
+player.create_ui()
 
 # 进入主事件循环
 root.mainloop()
