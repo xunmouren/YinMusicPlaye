@@ -5,14 +5,26 @@ import json
 # 加载音乐列表
 with open("./data/musiclist.json", "r", encoding="utf-8") as file:
     data = json.load(file)
+    musicpath = "path"
+    musicname = "name"
 
 class MusicPlayer:
-    def __init__(self, root):
+    def __init__(self, root, name):
         self.root = root
+        self.name = name
         self.current_index = 0  # 当前播放的音乐索引
         self.is_playing = False  # 当前播放状态
         self.is_paused = False  # 当前是否暂停
         mixer.init()  # 初始化 pygame 的 mixer 模块
+
+        # 创建一个标签用于显示当前播放的音乐名
+        self.music_name_label = tk.Label(self.root, text=self.name, font=("Arial", 14))
+        self.music_name_label.pack(pady=20)
+
+    def update_music_name(self):
+        """更新显示的音乐名"""
+        current_music_name = data[self.current_index]['name']  # 从数据中获取当前音乐名
+        self.music_name_label.config(text=current_music_name)  # 更新标签内容
 
     def toggle_play_pause(self):
         """播放或暂停音乐"""
@@ -28,29 +40,32 @@ class MusicPlayer:
             self.is_paused = False
         else:
             # 播放新音乐
-            mixer.music.load(data[self.current_index]['path'])  # 加载当前音乐
+            mixer.music.load(data[self.current_index][musicpath])  # 加载当前音乐
             mixer.music.play()
             self.play_pause_button.config(text="暂停")  # 切换按钮文本为“暂停”
             self.is_playing = True
             self.is_paused = False
+            self.update_music_name()  # 更新音乐名
 
     def next_music(self):
         """播放下一首音乐"""
         self.current_index = (self.current_index + 1) % len(data)  # 循环播放
-        mixer.music.load(data[self.current_index]['path'])  # 加载下一首音乐
+        mixer.music.load(data[self.current_index][musicpath])  # 加载下一首音乐
         mixer.music.play()  # 播放音乐
         self.play_pause_button.config(text="暂停")  # 更新按钮文本为“暂停”
         self.is_playing = True
         self.is_paused = False
+        self.update_music_name()  # 更新音乐名
 
     def previous_music(self):
         """播放上一首音乐"""
         self.current_index = (self.current_index - 1) % len(data)  # 循环播放
-        mixer.music.load(data[self.current_index]['path'])  # 加载上一首音乐
+        mixer.music.load(data[self.current_index][musicpath])  # 加载上一首音乐
         mixer.music.play()  # 播放音乐
         self.play_pause_button.config(text="暂停")  # 更新按钮文本为“暂停”
         self.is_playing = True
         self.is_paused = False
+        self.update_music_name()  # 更新音乐名
 
     def set_volume(self, volume):
         """设置音量"""

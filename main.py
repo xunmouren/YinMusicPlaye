@@ -13,7 +13,7 @@ buttonmain(root)
 # 调用 filemain 函数，将主窗口实例 root 传递给它
 filemain(root)
 # 创建 MusicPlayer 实例
-player = MusicPlayer(root)
+player = MusicPlayer(root,"当前音乐名")
 
 # 创建用户界面
 player.create_ui()
